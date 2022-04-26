@@ -1,0 +1,44 @@
+<!doctype html>
+<!-- This is a fake dApp, serve with `python -m http.server` -->
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<title>Demo dApp</title>
+	</head>
+	<body>
+		<a id="connect" href="#">Connect</a>
+		<br>
+		<a id="message" href="#">Send Message</a>
+
+		<script>
+			"use strict";
+
+			let iframe = null;
+
+
+			window.addEventListener("message", (event) => {
+				if (!iframe || event.source !== iframe.contentWindow) {
+					return;
+				}
+
+				alert(event.data);
+			}, false);
+
+			const connect = document.getElementById("connect");
+			connect.addEventListener("click", (event) => {
+				event.preventDefault();
+
+				iframe = document.createElement("iframe");
+				iframe.src = "web+evm:///";
+				iframe.style.display = "none";
+				document.body.appendChild(iframe);
+			});
+
+			const message = document.getElementById("message");
+			message.addEventListener("click", (event) => {
+				event.preventDefault();
+				iframe.contentWindow.postMessage("hello", "*");
+			});
+		</script>
+	</body>
+</html>

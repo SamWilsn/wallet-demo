@@ -1,0 +1,23 @@
+{
+  "manifest_version": 2,
+  "name": "WalletDemo",
+  "version": "1.0",
+
+  "description": "Is a fake wallet",
+
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+
+  "background": {
+    "scripts": [ "background.js" ]
+  },
+
+  "protocol_handlers": [
+    {
+      "protocol": "web+evm",
+      "name": "Wallet Demo",
+      "uriTemplate": "/wallet.html#!/%s"
+    }
+  ]
+}
