@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "WalletDemo",
+  "version": "1.0",
+
+  "description": "Is a fake wallet",
+
+  "icons": {
+  },
+
+  "background": {
+    "service_worker": "worker.js"
+  },
+
+  "web_accessible_resources": [
+    {
+      "resources": [ "wallet.html" ],
+      "matches": [ "<all_urls>" ]
+    }
+  ]
+}
